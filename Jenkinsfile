@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = "andrewduke51/tomcat"
     registryCredential = 'dockerhub'
+    dockerImage = ‘’
   }
   agent any
   stages {
@@ -16,7 +17,16 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          dockerimage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps {
+        script {
+          docker.withRegistry( '',dockerhub) {
+          dockerImage.push()
+          }
         }
       }
     }
