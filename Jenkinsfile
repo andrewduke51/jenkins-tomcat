@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "andrewduke51/tomcat"
     registryCredential = 'dockerhub'
-    dockerImage = ‘’
+    dockerImage = ''
   }
   agent any
   stages {
