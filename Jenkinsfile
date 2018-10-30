@@ -5,6 +5,10 @@ pipeline {
   }
   agent any
   stages {
+    stage('Start') {
+      steps {echo "kickoff this build!"}
+      }
+
     stage('Cloning Git') {
       steps {git 'https://github.com/andrewduke51/jenkins-tomcat.git'}
       }
