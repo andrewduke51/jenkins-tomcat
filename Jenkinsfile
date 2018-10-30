@@ -1,10 +1,9 @@
 pipeline {
   environment {
-    registry = “andrewduke51/tomcat”
-    registryCredential = ‘dockerhub’
-    dockerImage = ‘tomcat’
+    registry = "andrewduke51/tomcat"
+    registryCredential = 'dockerhub'
   }
-  agent any
+agent any
   stages {
     stage(‘Cloning Git’) {
       steps {
@@ -14,16 +13,7 @@ pipeline {
     stage(‘Building image’) {
       steps{
         script {
-          dockerImage = docker.build registry + “:$BUILD_NUMBER”
-        }
-      }
-    }
-    stage(‘Deploy Image’) {
-      steps{
-        script {
-          docker.withRegistry( ‘’, registryCredential ) {
-            dockerImage.push()
-          }
+          docker.build registry + “:$BUILD_NUMBER”
         }
       }
     }
