@@ -5,6 +5,9 @@ pipeline {
   }
   agent any
   stages {
+    stage('Cloning Git') {
+      steps {git 'https://github.com/andrewduke51/jenkins-tomcat.git'}
+
     stage('Building image') {
       steps{
         script {
