@@ -37,4 +37,3 @@ VOLUME ["/maven", "/opt/tomcat/logs", "/opt/tomcat/work", "/opt/tomcat/temp", "/
 CMD /opt/tomcat/bin/deploy-and-run.sh
 
 EXPOSE 80 443
-
