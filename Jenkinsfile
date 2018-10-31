@@ -22,6 +22,9 @@ pipeline {
       }
     }
     stage('Deploy Image') {
+      when {
+          branch 'jenkins-tomcat'
+        }
       steps {
         script {
           docker.withRegistry( '', registryCredential) {
